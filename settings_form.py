@@ -45,8 +45,10 @@ class SettingsForm(QDialog):
         self.layout.addLayout(self.button_layout)
 
 
-        #Viết tí tên cho nó sĩ =))))
-        self.author_label = QLabel("Trương Đăng Dương - D24CE01")
+        # Author label
+        self.author_label = QLabel()
+        self.author_label.setText('<a href="https://github.com/dangduongcoder">Trương Đăng Dương - D24CE01</a>')
+        self.author_label.setOpenExternalLinks(True)
         self.layout.addWidget(self.author_label)
 
     def on_size_changed(self, value):
