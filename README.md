@@ -19,6 +19,8 @@
 ---
 
 ## Tải xuống & Cài đặt
+📦 **Windows**: [Tải bản Windows](https://github.com/dangduongcoder/AmiTyping/releases/tag/AmiTyping)
+
 Để chạy AmiTyping từ mã nguồn, hãy làm theo các bước sau:
 
 1. **Clone repository:**
@@ -43,6 +45,8 @@
 Bạn có thể đóng gói AmiTyping thành file thực thi (Windows, Linux, MacOS) bằng **PyInstaller**.
 
 Chi tiết từng bước cho từng hệ điều hành đã được chuẩn bị sẵn tại đây:
+
+📦 **Windows Build**: 
 [**Hướng dẫn build chi tiết**](BUILD.md)
 
 ---
