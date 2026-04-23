@@ -48,18 +48,18 @@ class CharacterWindow(QMainWindow):
         self.buttons_layout.setSpacing(5)
         self.layout.addLayout(self.buttons_layout)
         
-        self.zoom_btn = QPushButton()
-        self.zoom_btn.setFixedSize(30, 30)
-        self.zoom_btn.setStyleSheet("background: transparent; border: none;")
-        self.zoom_btn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        zoom_pixmap = QPixmap(os.path.join(self.image_dir, "button_zoom.png"))
-        if not zoom_pixmap.isNull():
-            self.zoom_btn.setIcon(QIcon(zoom_pixmap.scaled(24, 24, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)))
-            self.zoom_btn.setIconSize(QSize(24, 24))
-        self.zoom_btn.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
-        self.zoom_btn.clicked.connect(self.zoom_out)
-        self.zoom_btn.customContextMenuRequested.connect(self.zoom_in)
-        self.buttons_layout.addWidget(self.zoom_btn)
+        # self.zoom_btn = QPushButton()
+        # self.zoom_btn.setFixedSize(30, 30)
+        # self.zoom_btn.setStyleSheet("background: transparent; border: none;")
+        # self.zoom_btn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        # zoom_pixmap = QPixmap(os.path.join(self.image_dir, "button_zoom.png"))
+        # if not zoom_pixmap.isNull():
+        #     self.zoom_btn.setIcon(QIcon(zoom_pixmap.scaled(24, 24, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)))
+        #     self.zoom_btn.setIconSize(QSize(24, 24))
+        # self.zoom_btn.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        # self.zoom_btn.clicked.connect(self.zoom_out)
+        # self.zoom_btn.customContextMenuRequested.connect(self.zoom_in)
+        # self.buttons_layout.addWidget(self.zoom_btn)
         
         self.setting_btn = QPushButton()
         self.setting_btn.setFixedSize(30, 30)
@@ -77,8 +77,8 @@ class CharacterWindow(QMainWindow):
     def move_to_bottom_right(self):
         screen = QApplication.primaryScreen().geometry()
         self.adjustSize()
-        x = screen.width() - self.width() - 50
-        y = screen.height() - self.height() - 50
+        x = screen.width() - self.width() - 150
+        y = screen.height() - self.height() - 250
         self.move(x, y)
 
     def load_image(self, key_name):
@@ -116,9 +116,16 @@ class CharacterWindow(QMainWindow):
         self.load_image("static")
         self.move(self.x(), old_bottom - self.height())
 
+    def set_character_size(self, size):
+        """Adjust the character display size.
+        `size` is the desired base dimension in pixels (width = height)."""
+        self.base_size = QSize(size, size)
+        self.load_image("static")
+
     def open_settings(self):
         form = SettingsForm(self)
         form.exec()
+
 
     def mousePressEvent(self, event: QMouseEvent):
         if event.button() == Qt.MouseButton.LeftButton:
